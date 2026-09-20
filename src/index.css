@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-paper font-sans text-base text-ink-900 antialiased;
+    overscroll-behavior-y: none;
+  }
+  :focus-visible {
+    outline: 3px solid theme('colors.signal');
+    outline-offset: 2px;
+  }
+  /* type scale: Fraunces for headings and readings, Manrope for everything else */
+  h1, h2 {
+    @apply font-display;
+  }
+  input::placeholder {
+    @apply text-ink-400;
+  }
+}
+
+@layer components {
+  /* Every tap target is at least 52px tall: worn hands, bright sun, one thumb. */
+  .btn-primary {
+    @apply inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl bg-ink-800 px-5 text-base font-bold text-white;
+    @apply transition-colors hover:bg-ink-700 active:bg-ink-700 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-secondary {
+    @apply inline-flex min-h-[52px] w-full items-center justify-center gap-2 rounded-xl border-2 border-ink-800 bg-transparent px-5 text-base font-bold text-ink-800;
+    @apply transition-colors active:bg-ink-100 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-light {
+    @apply inline-flex min-h-[52px] items-center justify-center rounded-xl bg-white px-6 text-base font-bold text-ink-900 active:bg-ink-200;
+  }
+  .btn-text {
+    @apply inline-flex min-h-[44px] w-full items-center justify-center text-sm font-bold text-ink-600 underline underline-offset-4;
+  }
+  .field-label {
+    @apply mb-1.5 block text-sm font-bold text-ink-700;
+  }
+  .field-input {
+    @apply min-h-[52px] w-full rounded-xl border-2 border-ink-300 bg-white px-4 text-base text-ink-900;
+    @apply focus:border-ink-800;
+  }
+}
